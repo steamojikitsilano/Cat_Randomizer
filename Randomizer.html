@@ -1,0 +1,325 @@
+ <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Battle Cats L.30 Randomizer</title>
+      <style>
+          body {
+              background-color: #1B1E34;
+          }
+          #cat-container {
+              margin: 0 auto;
+              text-align: center;
+              color: white;
+              font-family: Arial, sans-serif;
+              font-size: 18px;
+              max-width: 600px;
+              padding-top: 50px;
+          }
+          #cat-image {
+              margin-bottom: 10px;
+              max-width: 300px;
+              border-radius: 5px;
+          }
+          #cat-name {
+              font-size: 28px;
+              font-weight: bold;
+              margin-top: 20px;
+          }
+          #cat-description {
+              margin-top: 10px;
+              line-height: 1.5;
+          }
+          #randomizer-btn {
+              background-color: #00BFFF;
+              color: white;
+              padding: 10px 20px;
+              border-radius: 5px;
+              border: none;
+              cursor: pointer;
+              margin-top: 20px;
+              font-size: 18px;
+              transition: background-color 0.3s ease;
+          }
+          #randomizer-btn:hover {
+              background-color: #00A2DF;
+          }
+      </style>
+  </head>
+  <body>
+      <div id="cat-container">
+          <h1>Random Battle Cats Cat</h1>
+          <img id="cat-image" src="" alt="">
+          <p id="cat-name"></p>
+          <p id="cat-description"></p>
+          <button id="randomizer-btn">Randomize</button>
+      </div>
+      <script>
+          const cats = [
+            {
+                name: "Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 1700 Damage: 136 Range 140",
+            },
+            {
+                name: "Tank Cat",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 6800 Damage: 34 Range 110",
+            },
+            {
+                name: "Axe Cat",
+                image: "https://example.com/giraffe-cat.png",
+                description: "Health: 3400 Damage: 422 Range 150",
+            },
+            {
+                name: "Gross Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 6800 Damage: 1700 Range 350",
+            },
+            {
+                name: "Cow Cat",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 8500 Damage: 34 Range 110",
+            },
+            {
+                name: "Bird Cat",
+                image: "https://example.com/giraffe-cat.png",
+                description: "Health: 5100 Damage: 2380 Range 170",
+            },
+            {
+                name: "Fish Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 11900 Damage: 3060 Range 150",
+            },
+            {
+                name: "Lizard Cat",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 13600 Damage: 5950 Range 400",
+            },
+            {
+                name: "Titan Cat",
+                image: "https://example.com/giraffe-cat.png",
+                description: "Health: 17000 Damage: 4760 Range 150",
+            },
+            {
+                name: "Actress Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 6800 Damage: 1700 Range 350",
+            },
+            {
+                name: "Kung Fu Cat",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 15300 Damage: 18700 Range 300",
+            },
+            {
+                name: "Mr.",
+                image: "https://example.com/giraffe-cat.png",
+                description: "Health: 8500 Damage: 598 Range 140",
+            },
+            {
+                name: "Bondage Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 11900 Damage: 1700 Range 120",
+            },
+            {
+                name: "Dom Cat",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 11900 Damage: 2244 Range 210",
+            },
+            {
+                name: "Cats in a Box",
+                image: "https://example.com/giraffe-cat.png",
+                description: "Health: 13600 Damage: 5100 Range 140",
+            },
+            {
+                name: "Panties Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 6800 Damage: 1700 Range 350",
+            },
+            {
+                name: "Moneko",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 10200 Damage: 6800 Range 160",
+            },
+            {
+                name: "Tricycle Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 6800 Damage: 3060 Range 170",
+            },
+            {
+                name: "Zombie Cat",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 11900 Damage: 3400 Range 150",
+            },
+            {
+                name: "Samurai Cat",
+                image: "https://example.com/giraffe-cat.png",
+                description: "Health: 9180 Damage: 2210 Range 150",
+            },
+            {
+                name: "Sumo Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 10200 Damage: 150 Range 110",
+            },
+            {
+                name: "Boogie Cat",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 3400 Damage: 340 Range 140",
+            },
+            {
+                name: "Skirt Cat",
+                image: "https://example.com/giraffe-cat.png",
+                description: "Health: 6800 Damage: 1700 Range 350",
+            },
+            {
+                name: "Valkrie Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 23800 Damage: 8500 Range 350",
+            },
+            {
+                name: "Bahamut Cat",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 25500 Damage: 85000 Range 450",
+            },
+            {
+                name: "Kerihime",
+                image: "https://example.com/giraffe-cat.png",
+                description: "Health: 10200 Damage: 6800 Range 140",
+            },
+            {
+                name: "Cat Princess",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 10200 Damage: 7650 Range 140",
+            },
+            {
+                name: "Capsule Cat",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 14 Damage: 5100 Range 140",
+            },
+            {
+                name: "Masked Cat",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 1700 Damage: 136 Range 140",
+            },
+            {
+                name: "Bodhisattva Cat",
+                image: "https://example.com/giraffe-cat.png",
+                description: "Health: 5100 Damage: 2380 Range 170",
+            },
+            {
+                name: "Delinquet Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 17000 Damage: 7398 Range 250",
+            },
+            {
+                name: "Hip Hop Cat",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 12750 Damage: 12750 Range 220",
+            },
+            {
+                name: "Kotatsu Cat",
+                image: "https://example.com/giraffe-cat.png",
+                description: "Health: 20400 Damage: 1700 Range 130",
+            },
+            {
+                name: "Nekoluga",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 8500 Damage: 2550 Range 140",
+            },
+            {
+                name: "Nerd Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 3400 Damage: 5100 Range 1200",
+            },
+            {
+                name: "Swimmer Cat",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 12750 Damage: 7480 Range 185",
+            },
+            {
+                name: "Pogo Cat",
+                image: "https://example.com/giraffe-cat.png",
+                description: "Health: 5100 Damage: 1102 Range 150",
+            },
+            {
+                name: "Wheel Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 10200 Damage: 3740 Range 170",
+            },
+            {
+                name: "Apple Cat",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 15300 Damage: 3230 Range 180",
+            },
+            {
+                name: "Salon Cat",
+                image: "https://example.com/giraffe-cat.png",
+                description: "Health: 13600 Damage: 5100 Range 140",
+            },
+            {
+                name: "Ice Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 23800 Damage: 15300 Range 325",
+            },
+            {
+                name: "Cat Machine",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 81600 Damage: 59500 Range 140",
+            },
+            {
+                name: "Lesser Demon Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 37400 Damage: 28050 Range 180",
+            },
+            {
+                name: "Maiko Cat",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 1700 Damage: 136 Range 140",
+            },
+            {
+                name: "Jurassic Cat",
+                image: "https://example.com/giraffe-cat.png",
+                description: "Health: 9180 Damage: 2210 Range 150",
+            },
+            {
+                name: "Sumo Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 9690 Damage: 1248 Range 150",
+            },
+            {
+                name: "Viking Cat",
+                image: "https://example.com/tank-cat.png",
+                description: "Health: 11302 Damage: 1360 Range 140",
+            },
+            {
+                name: "Pirate Cat",
+                image: "https://example.com/giraffe-cat.png",
+                description: "Health: 5182 Damage: 558 Range 270",
+            },
+            {
+                name: "Thief Cat",
+                image: "https://example.com/normal-cat.png",
+                description: "Health: 7854 Damage: 918 Range 170",
+            },
+          ];
+ 
+          function generateRandomCat() {
+            const randomIndex = Math.floor(Math.random() * cats.length);
+            return cats[randomIndex];
+          }
+ 
+          const randomizerBtn = document.getElementById("randomizer-btn");
+          const catImage = document.getElementById("cat-image");
+          const catName = document.getElementById("cat-name");
+          const catDescription = document.getElementById("cat-description");
+ 
+          randomizerBtn.addEventListener("click", function() {
+            const randomCat = generateRandomCat();
+            catImage.src = randomCat.image;
+            catName.textContent = randomCat.name;
+            catDescription.textContent = randomCat.description;
+          });
+      </script>
+  </body>
+  </html>
+
+
